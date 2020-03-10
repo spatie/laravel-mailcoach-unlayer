@@ -3,13 +3,13 @@
 @endpush
 
 <script>
-    let initialized = false;
+    window.initialized = false;
 
     document.getElementById('unlayer').addEventListener('load', initUnlayer);
     document.addEventListener("turbolinks:load", initUnlayer);
 
     function initUnlayer() {
-        if (initialized) {
+        if (window.initialized) {
             return;
         }
 
@@ -20,7 +20,7 @@
             tools: {form: {enabled: false}},
         });
 
-        initialized = true;
+        window.initialized = true;
 
         unlayer.loadDesign({!! $structuredHtml !!});
 
