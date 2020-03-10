@@ -19,6 +19,14 @@ php artisan vendor:publish --provider="Spatie\MailcoachUnlayer\MailcoachUnlayerS
 php artisan migrate
 ```
 
+Add the route macro
+
+You must register the routes needed to handle uploads. We recommend that you don't put this in your routes file, but in the map method of RouteServiceProvider
+
+```php
+Route::mailcoach('mailcoachUnlayer');
+```
+
 ## Usage
 
 Set the `mailcoach.editor` config value to `\Spatie\MailcoachUnlayer\UnlayerEditor::class`
