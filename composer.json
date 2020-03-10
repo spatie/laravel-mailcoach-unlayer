@@ -1,0 +1,61 @@
+{
+    "name": "spatie/laravel-mailcoach-unlayer",
+    "description": "An Unlayer editor package for Mailcoach",
+    "keywords": [
+        "spatie",
+        "laravel-mailcoach-unlayer"
+    ],
+    "homepage": "https://github.com/spatie/laravel-mailcoach-unlayer",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rias",
+            "email": "rias@spatie.be",
+            "homepage": "https://spatie.be",
+            "role": "Developer"
+        }
+    ],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "require": {
+        "php": "^7.4",
+        "ext-json": "*",
+        "spatie/laravel-mailcoach": "^2.0",
+        "spatie/laravel-medialibrary": "^8.0"
+    },
+    "require-dev": {
+        "orchestra/testbench": "^5.0",
+        "phpunit/phpunit": "^9.0",
+        "symfony/var-dumper": "^5.0"
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://satis.mailcoach.app"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Spatie\\MailcoachUnlayer\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Spatie\\MailcoachUnlayer\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+              "Spatie\\MailcoachUnlayer\\MailcoachUnlayerServiceProvider"
+            ]
+        }
+    }
+}
