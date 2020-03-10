@@ -63,7 +63,7 @@
             unlayer.exportHtml(function(data) {
                 document.getElementById('html').value = data.html;
                 document.getElementById('structured_html').value = JSON.stringify(data.design);
-                document.querySelector('form').submit();
+                document.querySelector('.layout-main form').submit();
             });
         });
     }
