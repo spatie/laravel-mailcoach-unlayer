@@ -24,7 +24,7 @@ Add the route macro
 You must register the routes needed to handle uploads. We recommend that you don't put this in your routes file, but in the map method of RouteServiceProvider
 
 ```php
-Route::mailcoach('mailcoachUnlayer');
+Route::mailcoachUnlayer('mailcoachUnlayer');
 ```
 
 ## Usage
