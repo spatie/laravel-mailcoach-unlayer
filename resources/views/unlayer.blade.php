@@ -89,3 +89,5 @@
         <x-icon-label icon="fa-code" text="Save content"/>
     </button>
 </div>
+
+<x-replacer-help-texts />
