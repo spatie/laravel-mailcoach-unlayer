@@ -13,16 +13,16 @@ You can install the package via composer:
 composer require spatie/laravel-mailcoach-unlayer
 ```
 
-Publish and run the migration
+### Publish and run the migration
 
 ```bash
 php artisan vendor:publish --provider="Spatie\MailcoachUnlayer\MailcoachUnlayerServiceProvider" --tag="mailcoach-unlayer-migrations"
 php artisan migrate
 ```
 
-Add the route macro
+### Add the route macro
 
-You must register the routes needed to handle uploads. We recommend that you don't put this in your routes file, but in the map method of RouteServiceProvider
+You must register the routes needed to handle uploads. We recommend that you don't put this in your routes file, but in the map method of your `RouteServiceProvider`.
 
 ```php
 Route::mailcoachUnlayer('mailcoachUnlayer');
@@ -49,7 +49,7 @@ The Mailcoach Unlayer editor supports image uploads, to configure the `disk_name
 
 ## Testing
 
-``` bash
+```bash
 composer test
 ```
 
