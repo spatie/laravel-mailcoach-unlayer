@@ -1,8 +1,9 @@
 # Mailcoach Unlayer Editor
 
-An Unlayer editor package for Mailcoach
-    
-![](./docs/screenshot.png)
+This package is an optional add on for [Mailcoach](https://mailcoach.app). When installed, it adds the free version of [Unlayer editor](https://unlayer.com), a beautiful drag and drop editor, to Mailcoach. Should you want to customize the looks or need extra behaviour, take a look at [the pricing plans of Unlayer](https://unlayer.com/pricing).
+
+![screenshot](./docs/screenshot.png)
+
 
 ## Installation
 
@@ -12,11 +13,19 @@ You can install the package via composer:
 composer require spatie/laravel-mailcoach-unlayer
 ```
 
-Publish and run the migration
+### Publish and run the migration
 
 ```bash
 php artisan vendor:publish --provider="Spatie\MailcoachUnlayer\MailcoachUnlayerServiceProvider" --tag="mailcoach-unlayer-migrations"
 php artisan migrate
+```
+
+### Add the route macro
+
+You must register the routes needed to handle uploads. We recommend that you don't put this in your routes file, but in the map method of your `RouteServiceProvider`.
+
+```php
+Route::mailcoachUnlayer('mailcoachUnlayer');
 ```
 
 ## Usage
@@ -40,7 +49,7 @@ The Mailcoach Unlayer editor supports image uploads, to configure the `disk_name
 
 ## Testing
 
-``` bash
+```bash
 composer test
 ```
 

@@ -3,13 +3,13 @@
 @endpush
 
 <script>
-    let initialized = false;
+    window.initialized = false;
 
     document.getElementById('unlayer').addEventListener('load', initUnlayer);
     document.addEventListener("turbolinks:load", initUnlayer);
 
     function initUnlayer() {
-        if (initialized) {
+        if (window.initialized) {
             return;
         }
 
@@ -20,7 +20,7 @@
             tools: {form: {enabled: false}},
         });
 
-        initialized = true;
+        window.initialized = true;
 
         unlayer.loadDesign({!! $structuredHtml !!});
 
@@ -63,7 +63,7 @@
             unlayer.exportHtml(function(data) {
                 document.getElementById('html').value = data.html;
                 document.getElementById('structured_html').value = JSON.stringify(data.design);
-                document.querySelector('form').submit();
+                document.querySelector('.layout-main form').submit();
             });
         });
     }
