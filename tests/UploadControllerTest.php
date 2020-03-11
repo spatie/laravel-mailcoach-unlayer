@@ -66,6 +66,6 @@ class UploadControllerTest extends TestCase
     {
         Auth::login(new User);
 
-        Gate::define('viewMailcoach', fn() => true);
+        Gate::define('viewMailcoach', fn () => true);
     }
 }
