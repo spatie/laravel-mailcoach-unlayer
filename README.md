@@ -1,8 +1,9 @@
 # Mailcoach Unlayer Editor
 
-An Unlayer editor package for Mailcoach
-    
-![](./docs/screenshot.png)
+This package is an optional add on for [Mailcoach](https://mailcoach.app). When installed, it adds the free version of [Unlayer editor](https://unlayer.com), a beautiful drag and drop editor, to Mailcoach. Should you want to customize the looks or need extra behaviour, take a look at [the pricing plans of Unlayer](https://unlayer.com/pricing).
+
+![screenshot](./docs/screenshot.png)
+
 
 ## Installation
 
