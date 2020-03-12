@@ -8,7 +8,7 @@ When installed, it adds the free version of [Unlayer editor](https://unlayer.com
 
 ## Documentation
 
-You'll find the documentation for this package [inside the Mailcoach docs](https://mailcoach.app/docs/package/v2/customizing-the-editor/unlayer).
+You'll find the documentation for this package [inside the Mailcoach docs](https://mailcoach.app/docs/v2/package/customizing-the-editor/unlayer).
 
 ## Testing
 
