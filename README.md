@@ -32,7 +32,3 @@ If you discover any security related issues, please email freek@spatie.be instea
 
 - [Rias Van der Veken](https://github.com/riasvdv)
 - [All Contributors](../../contributors)
-
-## License
-
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
