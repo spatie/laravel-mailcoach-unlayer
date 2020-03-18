@@ -22,6 +22,7 @@ class Upload extends Model implements HasMedia
     public function registerMediaConversions(Media $media = null): void
     {
         $this->addMediaConversion('image')
+            ->keepOriginalImageFormat()
             ->fit(
                 Manipulations::FIT_MAX,
                 config('mailcoach.unlayer.max_width', 1500),
