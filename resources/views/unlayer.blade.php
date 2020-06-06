@@ -15,6 +15,7 @@
 
         unlayer.init({
             id: 'editor',
+            locale: document.documentElement.lang,
             displayMode: 'email',
             features: {textEditor: {spellChecker: true}},
             tools: {form: {enabled: false}},
@@ -70,7 +71,7 @@
 </script>
 <div>
     <div class="form-row max-w-full h-full">
-        <label class="label" for="html">Body</label>
+        <label class="label" for="html">{{ __('Body') }}</label>
         @isset($errors)
             @error('html')
                 <p class="form-error" role="alert">{{ $message }}</p>
@@ -86,7 +87,7 @@
 
 <div class="form-buttons">
     <button id="save" type="submit" class="button">
-        <x-icon-label icon="fa-code" text="Save content"/>
+        <x-icon-label icon="fa-code" :text="__('Save content')"/>
     </button>
 </div>
 
