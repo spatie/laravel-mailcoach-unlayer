@@ -2,9 +2,13 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 1.1.1 - 2020-06-12
+
+- fix Turbolinks compatibility
+
 ## 1.1.0 - 2020-06-10
 
-- add translations (#1) 
+- add translations (#1)
 
 ## 1.0.1 - 2020-03-18
 
