@@ -3,13 +3,15 @@
 @endpush
 
 <script>
-    window.initialized = false;
+    window.unlayerInitialized = false;
 
     document.getElementById('unlayer').addEventListener('load', initUnlayer);
+
+    document.addEventListener("turbolinks:before-visit", destroyUnlayer);
     document.addEventListener("turbolinks:load", initUnlayer);
 
     function initUnlayer() {
-        if (window.initialized) {
+        if (window.unlayerInitialized) {
             return;
         }
 
@@ -17,11 +19,11 @@
             id: 'editor',
             locale: document.documentElement.lang,
             displayMode: 'email',
-            features: {textEditor: {spellChecker: true}},
-            tools: {form: {enabled: false}},
+            features: { textEditor: { spellChecker: true } },
+            tools: { form: { enabled: false } },
         });
 
-        window.initialized = true;
+        window.unlayerInitialized = true;
 
         unlayer.loadDesign({!! $structuredHtml !!});
 
@@ -67,6 +69,13 @@
                 document.querySelector('.layout-main form').submit();
             });
         });
+    }
+
+    function destroyUnlayer() {
+        window.unlayerInitialized = false;
+
+        document.removeEventListener("turbolinks:before-visit", destroyUnlayer);
+        document.removeEventListener("turbolinks:load", initUnlayer);
     }
 </script>
 <div>
