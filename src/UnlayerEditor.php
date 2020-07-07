@@ -11,8 +11,8 @@ class UnlayerEditor implements Editor
     public function render(HasHtmlContent $model): string
     {
         $replacers = collect(config('mailcoach.replacers'))
-            ->map(fn(string $className) => app($className))
-            ->flatMap(fn(ReplacerWithHelpText $replacer) => $replacer->helpText())
+            ->map(fn (string $className) => app($className))
+            ->flatMap(fn (ReplacerWithHelpText $replacer) => $replacer->helpText())
             ->toArray();
 
         $options = array_merge_recursive([
