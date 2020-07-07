@@ -17,7 +17,7 @@
             return;
         }
 
-        unlayer.init({!! json_encode($options) !!});
+        unlayer.init(@json($options));
 
         window.unlayerInitialized = true;
 
