@@ -19,4 +19,21 @@ class UnlayerEditorTest extends TestCase
         $this->assertStringContainsString('input type="hidden" name="html"', $html);
         $this->assertStringContainsString('input type="hidden" name="structured_html"', $html);
     }
+
+    /** @test * */
+    public function test_passes_along_configured_options()
+    {
+        config(['mailcoach.unlayer.options' => [
+            'appearance' => ['theme' => 'dark']
+        ]]);
+
+        $editor = new UnlayerEditor();
+
+        $template = factory(Template::class)->create();
+
+        $html = $editor->render($template);
+
+        $this->assertStringContainsString('appearance', $html);
+        $this->assertStringContainsString('dark', $html);
+    }
 }

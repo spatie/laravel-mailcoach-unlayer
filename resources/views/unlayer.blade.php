@@ -13,12 +13,7 @@
             return;
         }
 
-        unlayer.init({
-            id: 'editor',
-            displayMode: 'email',
-            features: {textEditor: {spellChecker: true}},
-            tools: {form: {enabled: false}},
-        });
+        unlayer.init({!! json_encode($options) !!});
 
         window.initialized = true;
 
