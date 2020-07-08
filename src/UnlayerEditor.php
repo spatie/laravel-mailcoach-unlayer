@@ -15,11 +15,19 @@ class UnlayerEditor implements Editor
             ->flatMap(fn (ReplacerWithHelpText $replacer) => $replacer->helpText())
             ->toArray();
 
+        $options = array_merge_recursive([
+            'id' => 'editor',
+            'displayMode' => 'email',
+            'features'=> ['textEditor' => ['spellChecker' => true]],
+            'tools'=> ['form' => ['enabled' => false]],
+        ], config('mailcoach.unlayer.options', []));
+
         return view('mailcoach-unlayer::unlayer')
             ->with([
                 'html' => old('html', $model->getHtml()),
                 'structuredHtml' => old('structured_html', $model->getStructuredHtml()),
                 'replacers' => $replacers,
+                'options' => $options,
             ])
             ->render();
     }

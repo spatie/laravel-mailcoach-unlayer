@@ -17,13 +17,7 @@
             return;
         }
 
-        unlayer.init({
-            id: 'editor',
-            locale: document.documentElement.lang,
-            displayMode: 'email',
-            features: { textEditor: { spellChecker: true } },
-            tools: { form: { enabled: false } },
-        });
+        unlayer.init(@json($options));
 
         window.unlayerInitialized = true;
 
