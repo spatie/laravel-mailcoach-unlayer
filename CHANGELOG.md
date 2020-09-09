@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 1.2.1 - 2020-09-09
+
+- add support for Laravel 8
+
 ## 1.2.0 - 2020-07-08
 
 - Add ability to overrule unlayer options via config 
