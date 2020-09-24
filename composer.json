@@ -19,7 +19,7 @@
     "require": {
         "php": "^7.4",
         "ext-json": "*",
-        "spatie/laravel-mailcoach": "^2.0|^3.0",
+        "spatie/laravel-mailcoach": "^3.0",
         "spatie/laravel-medialibrary": "^8.0"
     },
     "require-dev": {
