@@ -107,5 +107,3 @@
         <x-mailcoach::icon-label icon="fa-code" :text="__('Save content')"/>
     </button>
 </div>
-
-<x-mailcoach::replacer-help-texts />
