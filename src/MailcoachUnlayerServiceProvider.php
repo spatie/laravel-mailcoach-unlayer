@@ -25,7 +25,7 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
 
         Route::macro('mailcoachUnlayer', function (string $url = '') {
             Route::prefix($url)->group(function () {
-                $middlewareClasses = config('mailcoach.middleware');
+                $middlewareClasses = config('mailcoach.middleware.web', []);
 
                 Route::middleware($middlewareClasses)->prefix('')->group(__DIR__ . '/../routes/api.php');
             });
