@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 1.3.4 - 2020-12-17
+
+- allow PHP 8
+
 ## 1.3.3 - 2020-11-12
 
 - allow medialib v9
