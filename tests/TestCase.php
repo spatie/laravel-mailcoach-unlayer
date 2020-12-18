@@ -6,6 +6,7 @@ use CreateMailcoachTables;
 use CreateMailcoachUnlayerTables;
 use CreateMediaTable;
 use Illuminate\Support\Facades\Route;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\Mailcoach\MailcoachServiceProvider;
 use Spatie\MailcoachUnlayer\MailcoachUnlayerServiceProvider;
@@ -31,6 +32,7 @@ abstract class TestCase extends Orchestra
             MediaLibraryServiceProvider::class,
             MailcoachServiceProvider::class,
             MailcoachUnlayerServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 

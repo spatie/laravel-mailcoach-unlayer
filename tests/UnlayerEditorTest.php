@@ -2,7 +2,7 @@
 
 namespace Spatie\MailcoachUnlayer\Tests;
 
-use Spatie\Mailcoach\Models\Template;
+use Spatie\Mailcoach\Domain\Campaign\Models\Template;
 use Spatie\MailcoachUnlayer\UnlayerEditor;
 
 class UnlayerEditorTest extends TestCase
