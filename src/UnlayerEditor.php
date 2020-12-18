@@ -2,7 +2,6 @@
 
 namespace Spatie\MailcoachUnlayer;
 
-
 use Spatie\Mailcoach\Domain\Campaign\Models\Concerns\HasHtmlContent;
 use Spatie\Mailcoach\Domain\Campaign\Support\Editor\Editor;
 use Spatie\Mailcoach\Domain\Campaign\Support\Replacers\ReplacerWithHelpText;
