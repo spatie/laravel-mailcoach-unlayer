@@ -5,7 +5,9 @@ namespace Spatie\MailcoachUnlayer\Tests;
 use CreateMailcoachTables;
 use CreateMailcoachUnlayerTables;
 use CreateMediaTable;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Route;
+use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 use Spatie\Mailcoach\MailcoachServiceProvider;
 use Spatie\MailcoachUnlayer\MailcoachUnlayerServiceProvider;
@@ -17,8 +19,9 @@ abstract class TestCase extends Orchestra
     {
         parent::setUp();
 
-        $this->withFactories(__DIR__.'/../database/factories');
-        $this->withFactories(__DIR__.'/../vendor/spatie/laravel-mailcoach/database/factories');
+        Factory::guessFactoryNamesUsing(
+            fn (string $modelName) => 'Spatie\\Mailcoach\\Database\\Factories\\'.class_basename($modelName).'Factory'
+        );
 
         Route::mailcoachUnlayer('mailcoachUnlayer');
 
@@ -31,6 +34,7 @@ abstract class TestCase extends Orchestra
             MediaLibraryServiceProvider::class,
             MailcoachServiceProvider::class,
             MailcoachUnlayerServiceProvider::class,
+            LivewireServiceProvider::class,
         ];
     }
 
@@ -49,7 +53,7 @@ abstract class TestCase extends Orchestra
         include_once __DIR__.'/../database/migrations/create_mailcoach_unlayer_tables.php.stub';
         (new CreateMailcoachUnlayerTables())->up();
 
-        include_once __DIR__.'/../vendor/spatie/laravel-medialibrary/database/migrations/create_media_table.php.stub';
+        include_once __DIR__.'/../vendor/spatie/laravel-mailcoach/database/migrations/create_media_table.php.stub';
         (new CreateMediaTable())->up();
     }
 }
