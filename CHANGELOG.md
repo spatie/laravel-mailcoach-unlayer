@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 2.0.0 - 2021-03-10
+
+- Mailcoach v4
+
 ## 1.3.4 - 2020-12-17
 
 - allow PHP 8

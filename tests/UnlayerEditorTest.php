@@ -12,7 +12,7 @@ class UnlayerEditorTest extends TestCase
     {
         $editor = new UnlayerEditor();
 
-        $template = factory(Template::class)->create();
+        $template = Template::factory()->create();
 
         $html = $editor->render($template);
 
@@ -29,7 +29,7 @@ class UnlayerEditorTest extends TestCase
 
         $editor = new UnlayerEditor();
 
-        $template = factory(Template::class)->create();
+        $template = Template::factory()->create();
 
         $html = $editor->render($template);
 

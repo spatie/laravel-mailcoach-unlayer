@@ -63,7 +63,7 @@
                 document.getElementById('html').value = data.html;
                 document.getElementById('structured_html').value = JSON.stringify(data.design);
                 document.getElementById('html').dataset.dirty = "";
-                document.querySelector('.layout-main form').submit();
+                document.querySelector('main form').submit();
             });
         });
 
