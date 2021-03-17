@@ -103,7 +103,5 @@
 </div>
 
 <div class="form-buttons">
-    <button id="save" type="submit" class="button">
-        <x-mailcoach::icon-label icon="fa-code" :text="__('Save content')"/>
-    </button>
+    <x-mailcoach::button id="save" :label="__('Save content')"/>
 </div>
