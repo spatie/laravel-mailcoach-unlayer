@@ -104,4 +104,5 @@
 
 <div class="form-buttons">
     <x-mailcoach::button id="save" :label="__('Save content')"/>
+    <x-mailcoach::button-secondary data-modal-trigger="send-test" :label="__('Send Test')"/>
 </div>
