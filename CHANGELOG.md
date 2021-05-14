@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 2.0.2 - 2021-05-14
+
+- Fix an issue where the editor wasn't filling the screen in Safari
+
 ## 2.0.1 - 2021-03-19
 
 - Improve buttons

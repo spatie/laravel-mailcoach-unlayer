@@ -86,7 +86,7 @@
     }
 
 </script>
-<div>
+<div class="h-full">
     <div class="form-row max-w-full h-full">
         <label class="label" for="html">{{ __('Body') }}</label>
         @isset($errors)
