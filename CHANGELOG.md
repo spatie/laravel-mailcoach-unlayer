@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 2.1.0 - 2021-11-18
+
+- Add PHP 8.1 support
+
+**Full Changelog**: https://github.com/spatie/laravel-mailcoach-unlayer/compare/2.0.2...2.1.0
+
 ## 2.0.2 - 2021-05-14
 
 - Fix an issue where the editor wasn't filling the screen in Safari
@@ -40,7 +46,7 @@ All notable changes to `laravel-mailcoach-unlayer` will be documented in this fi
 
 ## 1.2.0 - 2020-07-08
 
-- Add ability to overrule unlayer options via config 
+- Add ability to overrule unlayer options via config
 
 ## 1.1.2 - 2020-07-01
 
