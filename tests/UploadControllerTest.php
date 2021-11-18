@@ -64,7 +64,7 @@ class UploadControllerTest extends TestCase
 
     protected function authenticate(): void
     {
-        Auth::login(new User);
+        Auth::login(new User());
 
         Gate::define('viewMailcoach', fn () => true);
     }

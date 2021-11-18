@@ -16,7 +16,7 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
                 __DIR__.'/../resources/views' => base_path('resources/views/vendor/mailcoach/unlayer'),
             ], 'mailcoach-unlayer-views');
 
-            if (!class_exists('CreateMailcoachUnlayerTables')) {
+            if (! class_exists('CreateMailcoachUnlayerTables')) {
                 $this->publishes([
                     __DIR__ . '/../database/migrations/create_mailcoach_unlayer_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mailcoach_unlayer_tables.php'),
                 ], 'mailcoach-unlayer-migrations');

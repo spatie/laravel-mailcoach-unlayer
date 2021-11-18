@@ -24,7 +24,7 @@ class UnlayerEditorTest extends TestCase
     public function test_passes_along_configured_options()
     {
         config(['mailcoach.unlayer.options' => [
-            'appearance' => ['theme' => 'dark']
+            'appearance' => ['theme' => 'dark'],
         ]]);
 
         $editor = new UnlayerEditor();
