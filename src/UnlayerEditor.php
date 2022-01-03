@@ -8,6 +8,7 @@ use Spatie\Mailcoach\Domain\Automation\Support\Replacers\ReplacerWithHelpText as
 use Spatie\Mailcoach\Domain\Campaign\Enums\TagType;
 use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 use Spatie\Mailcoach\Domain\Campaign\Models\Concerns\HasHtmlContent;
+use Spatie\Mailcoach\Domain\Campaign\Models\Template;
 use Spatie\Mailcoach\Domain\Campaign\Support\Replacers\ReplacerWithHelpText as CampaignReplacerWithHelpText;
 use Spatie\Mailcoach\Domain\Shared\Support\Editor\Editor;
 
@@ -39,6 +40,7 @@ class UnlayerEditor implements Editor
                 'structuredHtml' => old('structured_html', $model->getStructuredHtml()),
                 'replacers' => $replacers,
                 'options' => $options,
+                'showTestButton' => !$model instanceof Template,
             ])
             ->render();
     }
