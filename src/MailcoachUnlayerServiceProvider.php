@@ -9,11 +9,11 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
 {
     public function boot()
     {
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'mailcoach-unlayer');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mailcoach-unlayer');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__.'/../resources/views' => base_path('resources/views/vendor/mailcoach/unlayer'),
+                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mailcoach/unlayer'),
             ], 'mailcoach-unlayer-views');
 
             if (! class_exists('CreateMailcoachUnlayerTables')) {

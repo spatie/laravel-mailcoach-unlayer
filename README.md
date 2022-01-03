@@ -4,7 +4,7 @@ This package is an optional add on for [Mailcoach](https://mailcoach.app).
  
 When installed, it adds the free version of [Unlayer editor](https://unlayer.com), a beautiful drag and drop editor, to Mailcoach. 
 
-![screenshot](./docs/screenshot.png)
+![screenshot](docs/screenshot.png)
 
 ## Support us
 
