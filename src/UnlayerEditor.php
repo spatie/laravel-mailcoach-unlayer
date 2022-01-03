@@ -40,7 +40,7 @@ class UnlayerEditor implements Editor
                 'structuredHtml' => old('structured_html', $model->getStructuredHtml()),
                 'replacers' => $replacers,
                 'options' => $options,
-                'showTestButton' => !$model instanceof Template,
+                'showTestButton' => ! $model instanceof Template,
             ])
             ->render();
     }
