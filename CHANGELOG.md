@@ -2,6 +2,12 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 2.1.1 - 2022-01-03
+
+- Don't show the "Send test" button on campaign templates
+
+**Full Changelog**: https://github.com/spatie/laravel-mailcoach-unlayer/compare/2.1.0...2.1.1
+
 ## 2.1.0 - 2021-11-18
 
 - Add PHP 8.1 support
