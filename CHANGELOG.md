@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-mailcoach-unlayer` will be documented in this file
 
+## 2.1.2 - 2022-02-03
+
+- Only show "Send test" button when it's possible to send a test
+
 ## 2.1.1 - 2022-01-03
 
 - Don't show the "Send test" button on campaign templates
