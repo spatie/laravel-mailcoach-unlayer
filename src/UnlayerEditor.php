@@ -11,7 +11,6 @@ use Spatie\Mailcoach\Domain\Campaign\Models\Concerns\HasHtmlContent;
 use Spatie\Mailcoach\Domain\Campaign\Models\Template;
 use Spatie\Mailcoach\Domain\Campaign\Support\Replacers\ReplacerWithHelpText as CampaignReplacerWithHelpText;
 use Spatie\Mailcoach\Domain\Shared\Support\Editor\Editor;
-use Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailTemplate;
 
 class UnlayerEditor implements Editor
 {
@@ -41,7 +40,7 @@ class UnlayerEditor implements Editor
                 'structuredHtml' => old('structured_html', $model->getStructuredHtml()),
                 'replacers' => $replacers,
                 'options' => $options,
-                'showTestButton' => ! $model instanceof Template && ! $model instanceof TransactionalMailTemplate,
+                'showTestButton' => ! $model instanceof Template,
             ])
             ->render();
     }
