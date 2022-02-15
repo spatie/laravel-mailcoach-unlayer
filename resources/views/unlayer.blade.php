@@ -7,8 +7,8 @@
 
     document.getElementById('unlayer').addEventListener('load', initUnlayer);
 
-    document.addEventListener('turbolinks:before-visit', confirmBeforeLeaveAndDestroyUnlayer);
-    document.addEventListener("turbolinks:load", initUnlayer);
+    document.addEventListener('turbo:before-visit', confirmBeforeLeaveAndDestroyUnlayer);
+    document.addEventListener("turbo:load", initUnlayer);
     window.addEventListener('beforeunload', confirmBeforeLeaveAndDestroyUnlayer);
 
 
@@ -80,8 +80,8 @@
 
         window.unlayerInitialized = false;
 
-        document.removeEventListener('turbolinks:before-visit', confirmBeforeLeaveAndDestroyUnlayer);
-        document.removeEventListener("turbolinks:load", initUnlayer);
+        document.removeEventListener('turbo:before-visit', confirmBeforeLeaveAndDestroyUnlayer);
+        document.removeEventListener("turbo:load", initUnlayer);
         window.removeEventListener('beforeunload', confirmBeforeLeaveAndDestroyUnlayer);
     }
 
