@@ -11,9 +11,8 @@
     document.addEventListener("turbo:load", initUnlayer);
     window.addEventListener('beforeunload', confirmBeforeLeaveAndDestroyUnlayer);
 
-
     function initUnlayer() {
-        if (window.unlayerInitialized) {
+        if (window.unlayerInitialized || unlayer.init === undefined) {
             return;
         }
 
