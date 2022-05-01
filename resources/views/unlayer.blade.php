@@ -11,7 +11,46 @@
     document.addEventListener("turbo:load", initUnlayer);
     window.addEventListener('beforeunload', confirmBeforeLeaveAndDestroyUnlayer);
 
+    function loadTemplate() {
+        document.getElementById('unlayer_template_error').classList.add('hidden');
+        const slug = document.getElementById('unlayer_template').value;
+
+        fetch('https://api.graphql.unlayer.com/graphql', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                query: `
+                    query StockTemplateLoad($slug: String!) {
+                      StockTemplate(slug: $slug) {
+                        StockTemplatePages {
+                          design
+                        }
+                      }
+                    }
+                  `,
+                variables: {
+                    slug: slug,
+                },
+            }),
+        })
+            .then((res) => res.json())
+            .then((result) => {
+                if (! result.data.StockTemplate) {
+                    document.getElementById('unlayer_template_error').innerHTML = '{{ __('mailcoach - Template not found.') }}';
+                    document.getElementById('unlayer_template_error').classList.remove('hidden');
+                    return;
+                }
+
+                unlayer.loadDesign(result.data.StockTemplate.StockTemplatePages[0].design);
+                document.querySelector('[data-modal="load-unlayer-template"]').dispatchEvent(new Event('dismiss'));
+            });
+    }
+
     function initUnlayer() {
+        document.getElementById('load-template').addEventListener('click', loadTemplate);
+
         if (window.unlayerInitialized || unlayer.init === undefined) {
             return;
         }
@@ -82,6 +121,7 @@
         document.removeEventListener('turbo:before-visit', confirmBeforeLeaveAndDestroyUnlayer);
         document.removeEventListener("turbo:load", initUnlayer);
         window.removeEventListener('beforeunload', confirmBeforeLeaveAndDestroyUnlayer);
+        document.getElementById('load-template').removeEventListener('click', loadTemplate);
     }
 
 </script>
@@ -106,4 +146,19 @@
     @if ($showTestButton)
         <x-mailcoach::button-secondary data-modal-trigger="send-test" :label="__('Send Test')"/>
     @endif
+    <x-mailcoach::button-secondary data-modal-trigger="load-unlayer-template" :label="__('mailcoach - Load Unlayer template')"/>
 </div>
+
+@push('modals')
+    <x-mailcoach::modal :title="__('mailcoach - Load Unlayer template')" name="load-unlayer-template">
+        <p class="mb-4">{!! __('mailcoach - You can load an <a class="text-blue-500" href="https://unlayer.com/templates" target="_blank">Unlayer template</a> by entering the slug.') !!}</p>
+
+        <x-mailcoach::text-field label="Unlayer template" name="unlayer_template" />
+        <p id="unlayer_template_error" class="form-error hidden mt-1" role="alert"></p>
+
+        <div class="form-buttons">
+            <x-mailcoach::button class="mt-auto ml-2" id="load-template" label="Load" type="button" />
+            <x-mailcoach::button-cancel :label=" __('mailcoach - Cancel')" />
+        </div>
+    </x-mailcoach::modal>
+@endpush

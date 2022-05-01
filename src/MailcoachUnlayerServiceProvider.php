@@ -10,6 +10,7 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'mailcoach-unlayer');
+        $this->loadJsonTranslationsFrom(__DIR__ . '/../resources/lang');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
