@@ -2,8 +2,9 @@
 
 namespace Spatie\MailcoachUnlayer;
 
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
+use Livewire\Livewire;
+use Spatie\Mailcoach\Mailcoach;
 
 class MailcoachUnlayerServiceProvider extends ServiceProvider
 {
@@ -16,20 +17,10 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
             $this->publishes([
                 __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mailcoach/unlayer'),
             ], 'mailcoach-unlayer-views');
-
-            if (! class_exists('CreateMailcoachUnlayerTables')) {
-                $this->publishes([
-                    __DIR__ . '/../database/migrations/create_mailcoach_unlayer_tables.php.stub' => database_path('migrations/' . date('Y_m_d_His', time()) . '_create_mailcoach_unlayer_tables.php'),
-                ], 'mailcoach-unlayer-migrations');
-            }
         }
 
-        Route::macro('mailcoachUnlayer', function (string $url = '') {
-            Route::prefix($url)->group(function () {
-                $middlewareClasses = config('mailcoach.middleware.web', []);
+        Livewire::component('mailcoach-unlayer::editor', UnlayerEditor::class);
 
-                Route::middleware($middlewareClasses)->prefix('')->group(__DIR__ . '/../routes/api.php');
-            });
-        });
+        Mailcoach::editorScript(UnlayerEditor::class, 'https://editor.unlayer.com/embed.js');
     }
 }

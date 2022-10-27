@@ -2,22 +2,42 @@
 
 namespace Spatie\MailcoachUnlayer;
 
+use Illuminate\Contracts\View\View;
+use Illuminate\Support\Arr;
 use Spatie\Mailcoach\Domain\Audience\Models\Tag;
 use Spatie\Mailcoach\Domain\Automation\Models\AutomationMail;
 use Spatie\Mailcoach\Domain\Automation\Support\Replacers\ReplacerWithHelpText as AutomationMailReplacerWithHelpText;
 use Spatie\Mailcoach\Domain\Campaign\Enums\TagType;
 use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 use Spatie\Mailcoach\Domain\Campaign\Models\Concerns\HasHtmlContent;
-use Spatie\Mailcoach\Domain\Campaign\Models\Template;
+use Spatie\Mailcoach\Domain\Campaign\Rules\HtmlRule;
 use Spatie\Mailcoach\Domain\Campaign\Support\Replacers\ReplacerWithHelpText as CampaignReplacerWithHelpText;
-use Spatie\Mailcoach\Domain\Shared\Support\Editor\Editor;
-use Spatie\Mailcoach\Domain\TransactionalMail\Models\TransactionalMailTemplate;
+use Spatie\Mailcoach\Http\App\Livewire\EditorComponent;
 
-class UnlayerEditor implements Editor
+class UnlayerEditor extends EditorComponent
 {
-    public function render(HasHtmlContent $model): string
+    public static bool $supportsTemplates = false;
+
+    public function mount(HasHtmlContent $model)
     {
-        $replacers = match ($model::class) {
+        parent::mount($model);
+        $this->template = null;
+        $this->templateId = null;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'templateFieldValues.html' => ['required', new HtmlRule()],
+        ];
+    }
+
+    public function render(): View
+    {
+        $this->templateFieldValues['html'] ??= '';
+        $this->templateFieldValues['json'] ??= '';
+
+        $replacers = match ($this->model::class) {
             AutomationMail::class => config('mailcoach.automation.replacers'),
             default => config('mailcoach.campaigns.replacers'),
         };
@@ -32,28 +52,30 @@ class UnlayerEditor implements Editor
             'displayMode' => 'email',
             'features' => ['textEditor' => ['spellChecker' => true]],
             'tools' => ['form' => ['enabled' => false]],
-            'specialLinks' => $this->getSpecialLinks($model),
+            'specialLinks' => $this->getSpecialLinks($this->model),
         ], config('mailcoach.unlayer.options', []));
 
-        return view('mailcoach-unlayer::unlayer')
-            ->with([
-                'html' => old('html', $model->getHtml()),
-                'structuredHtml' => old('structured_html', $model->getStructuredHtml()),
-                'replacers' => $replacers,
-                'options' => $options,
-                'showTestButton' => ! $model instanceof Template && ! $model instanceof TransactionalMailTemplate,
-            ])
-            ->render();
+        return view('mailcoach-unlayer::unlayer', [
+            'replacers' => $replacers,
+            'options' => $options,
+        ]);
+    }
+
+    protected function filterNeededFields(array $fields, \Spatie\Mailcoach\Domain\Campaign\Models\Template|null $template): array
+    {
+        return Arr::only($fields, ['html', 'json']);
     }
 
     private function getSpecialLinks(HasHtmlContent $model): array
     {
         $links = [
+            ['name' => 'Webview URL', 'href' => '::webviewUrl::', 'target' => '_blank'],
+            ['name' => 'Manage preferences', 'href' => '::preferencesUrl::', 'target' => '_blank'],
             ['name' => 'Unsubscribe URL', 'href' => '::unsubscribeUrl::', 'target' => '_blank'],
         ];
 
         if ($model instanceof Campaign && $model->emailList) {
-            $tags = $model->emailList->tags()->where('type', TagType::DEFAULT)->get();
+            $tags = $model->emailList->tags()->where('type', TagType::Default)->get();
 
             $unsubscribeLinks = [];
             $tags->each(function (Tag $tag) use (&$unsubscribeLinks) {
