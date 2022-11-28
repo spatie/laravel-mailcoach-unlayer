@@ -16,8 +16,6 @@ use Spatie\Mailcoach\Http\App\Livewire\EditorComponent;
 
 class UnlayerEditor extends EditorComponent
 {
-    public static bool $supportsTemplates = false;
-
     public function mount(HasHtmlContent $model)
     {
         parent::mount($model);
