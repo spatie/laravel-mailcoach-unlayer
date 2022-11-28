@@ -64,7 +64,7 @@
 
             unlayer.init(@json($options));
 
-            unlayer.loadDesign(JSON.parse(JSON.stringify(this.json)));
+            unlayer.loadDesign(JSON.parse(JSON.stringify(this.json).replaceAll('[[[', '&#91;&#91;&#91;')));
 
             if (! this.json) {
                 unlayer.loadBlank({
@@ -110,7 +110,7 @@
             unlayer.addEventListener('design:updated', () => {
                 unlayer.exportHtml(function(data) {
                     component.html = data.html;
-                    component.json = data.design;
+                    component.json = JSON.parse(JSON.stringify(data.design).replaceAll('&#91;&#91;&#91;', '[[['));
                     document.getElementById('editor').dirty = true;
                 });
             });
