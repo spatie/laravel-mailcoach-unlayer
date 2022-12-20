@@ -1,13 +1,12 @@
 @push('endHead')
     <style>
         #unlayer-wrapper {
-            margin-top: -1.5rem;
+            margin-top: 0;
             margin-right: -0.75rem;
         }
 
         @media (min-width: 768px) {
             #unlayer-wrapper {
-                margin-top: -2.55rem;
                 margin-right: -0.5rem;
             }
         }
