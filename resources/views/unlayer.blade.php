@@ -108,7 +108,7 @@
             const component = this;
             unlayer.addEventListener('design:updated', () => {
                 unlayer.exportHtml(function(data) {
-                    component.html = data.html;
+                    component.html = data.html.replaceAll('&#91;&#91;&#91;', '[[[');
                     component.json = JSON.parse(JSON.stringify(data.design).replaceAll('&#91;&#91;&#91;', '[[['));
                     document.getElementById('editor').dirty = true;
                 });
