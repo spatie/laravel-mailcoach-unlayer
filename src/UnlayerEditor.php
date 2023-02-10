@@ -30,6 +30,14 @@ class UnlayerEditor extends EditorComponent
         ];
     }
 
+    public function saveQuietly()
+    {
+        $this->fullHtml = str_replace('&#91;&#91;&#91;', '[[[', $this->fullHtml);
+        $this->fullHtml = str_replace('&#93;&#93;&#93;', ']]]', $this->fullHtml);
+
+        parent::saveQuietly();
+    }
+
     public function render(): View
     {
         $this->templateFieldValues['html'] ??= '';
@@ -67,9 +75,9 @@ class UnlayerEditor extends EditorComponent
     private function getSpecialLinks(HasHtmlContent $model): array
     {
         $links = [
-            ['name' => 'Webview URL', 'href' => '::webviewUrl::', 'target' => '_blank'],
-            ['name' => 'Manage preferences', 'href' => '::preferencesUrl::', 'target' => '_blank'],
-            ['name' => 'Unsubscribe URL', 'href' => '::unsubscribeUrl::', 'target' => '_blank'],
+            ['name' => 'Webview URL', 'href' => '{{webviewUrl}}', 'target' => '_blank'],
+            ['name' => 'Manage preferences', 'href' => '{{preferencesUrl}}', 'target' => '_blank'],
+            ['name' => 'Unsubscribe URL', 'href' => '{{unsubscribeUrl}}', 'target' => '_blank'],
         ];
 
         if ($model instanceof Campaign && $model->emailList) {
@@ -79,7 +87,7 @@ class UnlayerEditor extends EditorComponent
             $tags->each(function (Tag $tag) use (&$unsubscribeLinks) {
                 $unsubscribeLinks[] = [
                     'name' => $tag->name,
-                    'href' => "::unsubscribeTag::{$tag->name}::",
+                    'href' => "{{unsubscribeTag['{$tag->name}']",
                     'target' => '_blank',
                 ];
             });
