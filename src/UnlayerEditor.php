@@ -87,7 +87,7 @@ class UnlayerEditor extends EditorComponent
             $tags->each(function (Tag $tag) use (&$unsubscribeLinks) {
                 $unsubscribeLinks[] = [
                     'name' => $tag->name,
-                    'href' => "{{unsubscribeTag['{$tag->name}']",
+                    'href' => "{{unsubscribeTag['{$tag->name}']}}",
                     'target' => '_blank',
                 ];
             });

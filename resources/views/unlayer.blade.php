@@ -95,12 +95,12 @@
                 }).then(data => done({ progress: 100, url: data.file.url }))
             });
 
-            const mergeTags = {};
+            const mergeTags = [];
             @foreach ($replacers as $replacerName => $replacerDescription)
-                mergeTags["{{ $replacerName }}"] = {
-                    name: "{{ $replacerName }}",
-                    value: '@{{' + "{{ $replacerName }}" + '}}'
-                };
+                mergeTags.push({
+                    name: "{!! $replacerName !!}",
+                    value: '@{{' + "{!! $replacerName !!}" + '}}'
+                });
             @endforeach
 
             unlayer.setMergeTags(mergeTags);
