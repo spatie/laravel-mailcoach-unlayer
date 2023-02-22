@@ -99,7 +99,7 @@
             @foreach ($replacers as $replacerName => $replacerDescription)
                 mergeTags.push({
                     name: "{!! $replacerName !!}",
-                    value: '@{{' + "{!! $replacerName !!}" + '}}'
+                    value: "::{!! $replacerName !!}::"
                 });
             @endforeach
 
