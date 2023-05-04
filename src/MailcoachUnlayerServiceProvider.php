@@ -15,7 +15,7 @@ class MailcoachUnlayerServiceProvider extends ServiceProvider
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
-                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mailcoach/unlayer'),
+                __DIR__ . '/../resources/views' => base_path('resources/views/vendor/mailcoach-unlayer'),
             ], 'mailcoach-unlayer-views');
         }
 
