@@ -12,7 +12,7 @@ use Spatie\Mailcoach\Domain\Campaign\Models\Campaign;
 use Spatie\Mailcoach\Domain\Campaign\Models\Concerns\HasHtmlContent;
 use Spatie\Mailcoach\Domain\Campaign\Rules\HtmlRule;
 use Spatie\Mailcoach\Domain\Campaign\Support\Replacers\ReplacerWithHelpText as CampaignReplacerWithHelpText;
-use Spatie\Mailcoach\Http\App\Livewire\EditorComponent;
+use Spatie\Mailcoach\Livewire\Editor\EditorComponent;
 
 class UnlayerEditor extends EditorComponent
 {

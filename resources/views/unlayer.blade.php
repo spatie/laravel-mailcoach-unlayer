@@ -134,7 +134,7 @@
 
         <x-mailcoach::replacer-help-texts :model="$model" />
 
-        <x-mailcoach::editor-buttons :preview-html="$fullHtml" :model="$model">
+        <x-mailcoach::editor-buttons :preview-html="$this->previewHtml" :model="$model">
             @isset($errors)
                 @error('html')
                 <p class="form-error" role="alert">{{ $message }}</p>
